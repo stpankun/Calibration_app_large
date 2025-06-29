@@ -50,12 +50,8 @@ def assign_id_in_direction(peaks, start_id, start_peak, direction, max_dist=0.00
 
         next_peak = next_peaks[0]
 
-        if direction in ['left', 'right']:
-            if abs(next_peak[1] - y) > max_dist:
-                break
-        else:
-            if abs(next_peak[0] - x) > max_dist:
-                break
+        if np.sqrt((next_peak[0] - x)**2 + (next_peak[1] - y)**2) > max_dist:
+            break
 
         if direction == 'left':
             new_id = [id_x - 1, id_y]
